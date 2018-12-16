@@ -204,5 +204,9 @@ div.logo img{
 }
 .menu-btn i{
   font-size: 50px;
+  color: #faf7d9;
 }
-
+.menu-btn::before i{
+  font-size: 50px;
+  color: #faf7d9;
+}

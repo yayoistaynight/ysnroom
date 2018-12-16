@@ -39,7 +39,7 @@ html, body {
     opacity: 1;
   }
 
-.box{
+/*.box{
   position: absolute;
   top: 25%; left: 20%;
   width: 60%; height:600px;
@@ -61,6 +61,7 @@ div.box2 img{
   top: calc(15%); left: 15%;
 
 }
+*/
 .menu-btn{       /*ボタン形*/
   position: absolute;
   width: calc(100px + 1vw);height: calc(100px + 2vh);
