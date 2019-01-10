@@ -1,0 +1,105 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+#about{
+  width: 100%; height: 100%;
+}
+.stage{
+  position: relative;
+  width: 100%; height: 100%;
+  top: 0px; left: 0px;
+  background-color: #4B9EF4;
+  overflow: hidden;
+  animation: fadein 1.5s ease 0s;
+
+}
+/*
+.stage:before{ position: absolute; content: ""; display: block; }
+.stage:before {
+    position: absolute;
+    top: 20px; left: 20px;
+    width: calc(100% - 40px); height: calc(100% - 40px);
+    border: dashed 5px #d1f4fa;
+    box-sizing: border-box;
+    opacity: 0;
+  }
+  */
+.frame{
+    position: absolute;
+    width: 100%;height: 100%;
+    margin: 20px;
+    opacity: 1;
+    
+  }
+.frame::before{ position: absolute; content: ""; display: block;}
+.frame::before{
+    position: absolute;
+    width: calc(100% - 40px); height: calc(100% - 40px);
+    border: dashed 7px #d1f4fa;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    opacity: 1;
+  }
+.menu-btn{       /*ボタン形*/
+  position: absolute;
+  width: calc(100px + 1vw);height: calc(100px + 2vh);
+  top: 25px; right: 25px;
+  background-color: #071e3d;
+  border:0.5px #071e3d;
+  cursor: pointer;
+  border-radius: 7px;
+  overflow: hidden;
+  transform: scale(1);
+  animation: oncar .6s ease 1.6s;
+  animation-delay: 1000ms;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.menu-btn:after{ /*ボタンレイアウト*/
+  content: "";
+  display: block;
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 5px;
+  top: 3px;left: 3px;
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border: dashed 2px #edfffa;
+  transform: scale(1);
+}
+.menu-btn::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4aa9a4;
+  transform: scale(0);
+  transition: all .35s cubic-bezier(0.77,0,0.17,1.02) 0s;
+}
+.menu-btn:hover::before{
+  transform: scale(1);
+}
+@keyframes oncar{
+  
+  40%{
+    transform: scale(1.1);
+  }
+  60%{
+    transform: scale(1);
+  }
+  80%{
+    transform: scale(1.03);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.opening{
+  position: absolute;
+  width: 100%; height: 100%;
+  top: 0px; left: 0px;
+}
