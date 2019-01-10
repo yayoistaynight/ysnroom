@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Crescent Aquarium web site</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script type="text/javascript"src="MV.javascript"></script>
+    <link rel="shortcut icon" href="icon/favicon.ico">
+    <meta name="viewport"content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="about">
+    
+     
+    <main class="stage">
+        
+        <div class="moon"></div>
+        <div class="frame"></div>
+            <canvas id="cvs" width="1920px" height="975px" ></canvas>
+
+            <script>
+            
+            var canvas = document.getElementById("cvs");
+            var ctx = canvas.getContext("2d");
+            var imgCnt = 20;  // 描画する画像の数
+            var aryImg = [];  // 画像の情報を格納
+            var cvsw = 1920;   // canvasタグに指定したwidth
+            var cvsh = 975;   // canvasタグに指定したheight
+            var imgBaseSizeW = 30;    // 画像の基本サイズ横幅
+            var imgBaseSizeH = 30;  // 画像の基本サイズ立幅
+            var speedMax = 2;         // 落下速度の最大値
+            var speedMin = 0.5;       // 落下速度の最小値
+            
+            // 画像の読み込み
+            var img = new Image();
+            img.src = "image/star.png";
+            img.onload = flow_start;
+            
+            // 画像のパラメーターを設定
+            function setImagas(){
+            var aspect = 0;
+              for(var i = 0;i < imgCnt;i++){
+                aryImg.push({
+                  "posx": Math.random()*cvsw,     // 初期表示位置x
+                  "posy": Math.random()*cvsh,     // 初期表示位置y
+                  "sizew": imgBaseSizeW,          // 画像の幅
+                  "sizeh": imgBaseSizeH,          // 画像の高さ
+                  "speedy": Math.random()*(speedMax-speedMin)+speedMin,　// 画像が落ちていく速度
+                });
+              }
+            }
+            
+            // 描画、パラメーターの更新
+            var idx = 0;
+            function flow(){
+              ctx.clearRect(0,0,cvsw,cvsh);
+              for(idx = 0;idx < imgCnt;idx++){
+                aryImg[idx].posy += aryImg[idx].speedy;;
+                ctx.drawImage(img, aryImg[idx].posx, aryImg[idx].posy, aryImg[idx].sizew , aryImg[idx].sizeh);
+                // 範囲外に描画された画像を上に戻す
+                if(aryImg[idx].posy >= cvsh){
+                  aryImg[idx].posy = 0 - aryImg[idx].sizeh;
+                }
+              }
+            }
+            
+            function flow_start(){
+              setImagas();
+              setInterval(flow,10);
+            }
+            
+            </script>
+    <nav class="social">
+      <a href="https://twitter.com/nakuru2000" target="_blank" rel="noopener" title="twitter">
+      <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.twitch.tv/nakuru2000" target="_blank" rel="noopener" title="twitch">
+      <i class="fab fa-twitch"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UC0-9yjsWLTx8xnsc6BWOpTg" target="_blank" rel="noopener" title="youtube">
+      <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://yayoistaynight.tumblr.com" target="_blank" rel="noopener" title="tumblr">
+      <i class="fab fa-tumblr-square"></i>
+      </a>
+      <a href=https://www.amazon.co.jp/hz/wishlist/ls/2RDKNTQXZDNAQ?&sort=default target="_blank" rel="noopener" title="amazon">
+      <i class="fab fa-amazon"></i>
+      </a>
+    </nav>
+    
+    
+    <div class="logo">
+    <img src="image/LOGO.png">
+    </div>
+    
+    
+    <button type="button"onClick="document.location='about.html';"class="menu-btn">
+      <i class="fas fa-cloud-moon"></i>
+    </button>
+    
+    <div class="menu" data-state="close">
+      <section class="menu-box"></section>
+    </div>
+    </div> 
+    </div>
+  </main> 
+    
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="jquery.fadethis.min.js"></script>
+<script>
+$(window).fadeThis();
+</script>
+</body>
